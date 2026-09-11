@@ -1,0 +1,8 @@
+print("please enter stock ticker symbol")
+stocktickersymbol = input()
+print("number of share")
+numberofshare = float(input())
+print("cost per share")
+costpershare = float(input())
+amountinvested = costpershare * numberofshare
+print(amountinvested)
