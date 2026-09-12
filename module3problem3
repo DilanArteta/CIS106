@@ -1,0 +1,6 @@
+print("Enter total amount received:")
+amount_received = float(input())
+
+amount_each = amount_received / 3
+
+print("Amount Each Person Receives: $" + format(amount_each, ".2f"))
