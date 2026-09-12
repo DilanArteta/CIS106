@@ -1,0 +1,21 @@
+print("Enter auto make:")
+make = input()
+
+print("Enter auto model:")
+model = input()
+
+print("Enter MSRP:")
+msrp = float(input())
+
+print("Enter discount percent as a decimal (example: 0.15 for 15%):")
+discount_percent = float(input())
+
+amount_off = msrp * discount_percent
+discounted_price = msrp - amount_off
+
+print("Make:", make)
+print("Model:", model)
+print("MSRP: $" + format(msrp, ".2f"))
+print("Discount Percent:", format(discount_percent * 100, ".2f") + "%")
+print("Amount Off: $" + format(amount_off, ".2f"))
+print("Discounted Price: $" + format(discounted_price, ".2f"))
