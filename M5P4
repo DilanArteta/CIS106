@@ -1,0 +1,36 @@
+# Calculate an appliance warranty and the total cost.
+
+def get_appliance_name():
+    appliance_name = input("Enter the appliance name: ")
+    return appliance_name
+
+
+def get_appliance_cost():
+    appliance_cost = float(input("Enter the appliance cost: "))
+    return appliance_cost
+
+
+def calculate_warranty_cost(appliance_cost):
+    if appliance_cost > 1000.00:
+        warranty_cost = appliance_cost * 0.10
+    else:
+        warranty_cost = appliance_cost * 0.05
+    return warranty_cost
+
+
+def display_result(appliance_name, appliance_cost, warranty_cost, total):
+    print(f"Appliance: {appliance_name}")
+    print(f"Appliance cost: ${appliance_cost:.2f}")
+    print(f"Warranty cost: ${warranty_cost:.2f}")
+    print(f"Total: ${total:.2f}")
+
+
+def main():
+    appliance_name = get_appliance_name()
+    appliance_cost = get_appliance_cost()
+    warranty_cost = calculate_warranty_cost(appliance_cost)
+    total = appliance_cost + warranty_cost
+    display_result(appliance_name, appliance_cost, warranty_cost, total)
+
+
+main()

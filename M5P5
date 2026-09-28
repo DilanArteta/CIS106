@@ -1,0 +1,58 @@
+# Calculate adjusted gross income and income tax.
+
+def get_last_name():
+    last_name = input("Enter your last name: ")
+    return last_name
+
+
+def get_number_of_dependents():
+    number_of_dependents = int(input("Enter the number of dependents: "))
+    return number_of_dependents
+
+
+def get_gross_income():
+    gross_income = float(input("Enter your gross income: "))
+    return gross_income
+
+
+def calculate_adjusted_gross_income(gross_income, number_of_dependents):
+    adjusted_gross_income = gross_income - number_of_dependents * 12000
+    return adjusted_gross_income
+
+
+def calculate_income_tax(adjusted_gross_income):
+    if adjusted_gross_income > 50000:
+        tax_rate = 0.20
+    else:
+        tax_rate = 0.10
+
+    income_tax = adjusted_gross_income * tax_rate
+    if income_tax < 0:
+        income_tax = 100.00
+    return income_tax
+
+
+def display_result(last_name, gross_income, number_of_dependents,
+                   adjusted_gross_income, income_tax):
+    print(f"Last name: {last_name}")
+    print(f"Gross income: ${gross_income:.2f}")
+    print(f"Number of dependents: {number_of_dependents}")
+    print(f"Adjusted gross income: ${adjusted_gross_income:.2f}")
+    print(f"Income tax: ${income_tax:.2f}")
+
+
+def main():
+    last_name = get_last_name()
+    number_of_dependents = get_number_of_dependents()
+    gross_income = get_gross_income()
+    adjusted_gross_income = calculate_adjusted_gross_income(
+        gross_income, number_of_dependents
+    )
+    income_tax = calculate_income_tax(adjusted_gross_income)
+    display_result(
+        last_name, gross_income, number_of_dependents,
+        adjusted_gross_income, income_tax
+    )
+
+
+main()

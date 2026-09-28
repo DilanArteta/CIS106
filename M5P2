@@ -1,0 +1,40 @@
+# Calculate an item's extended price.
+
+def get_item():
+    item = input("Enter the item (A or B): ")
+    return item
+
+
+def get_quantity():
+    quantity = int(input("Enter the quantity: "))
+    return quantity
+
+
+def get_unit_price(item):
+    if item == "A":
+        unit_price = 10.00
+    else:
+        unit_price = 20.00
+    return unit_price
+
+
+def calculate_extended_price(quantity, unit_price):
+    extended_price = quantity * unit_price
+    return extended_price
+
+
+def display_result(item, unit_price, extended_price):
+    print(f"Item: {item}")
+    print(f"Unit price: ${unit_price:.2f}")
+    print(f"Extended price: ${extended_price:.2f}")
+
+
+def main():
+    item = get_item()
+    quantity = get_quantity()
+    unit_price = get_unit_price(item)
+    extended_price = calculate_extended_price(quantity, unit_price)
+    display_result(item, unit_price, extended_price)
+
+
+main()

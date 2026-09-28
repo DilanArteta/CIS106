@@ -1,0 +1,38 @@
+# Calculate an order total using a quantity-based unit price.
+
+def get_quantity():
+    quantity = int(input("Enter the quantity: "))
+    return quantity
+
+
+def get_unit_price(quantity):
+    if quantity >= 1000:
+        unit_price = 3.00
+    else:
+        unit_price = 5.00
+    return unit_price
+
+
+def calculate_total(quantity, unit_price):
+    extended_price = quantity * unit_price
+    tax = extended_price * 0.07
+    total = extended_price + tax
+    return extended_price, tax, total
+
+
+def display_result(quantity, unit_price, extended_price, tax, total):
+    print(f"Quantity: {quantity}")
+    print(f"Unit price: ${unit_price:.2f}")
+    print(f"Extended price: ${extended_price:.2f}")
+    print(f"Tax: ${tax:.2f}")
+    print(f"Total: ${total:.2f}")
+
+
+def main():
+    quantity = get_quantity()
+    unit_price = get_unit_price(quantity)
+    extended_price, tax, total = calculate_total(quantity, unit_price)
+    display_result(quantity, unit_price, extended_price, tax, total)
+
+
+main()

@@ -1,0 +1,39 @@
+# Calculate a book order total and shipping charge.
+
+def get_number_of_books():
+    number_of_books = int(input("Enter the number of books: "))
+    return number_of_books
+
+
+def get_cost_per_book():
+    cost_per_book = float(input("Enter the cost per book: "))
+    return cost_per_book
+
+
+def calculate_order_total(number_of_books, cost_per_book):
+    order_total = number_of_books * cost_per_book
+    return order_total
+
+
+def get_shipping_charge(order_total):
+    if order_total > 50.00:
+        shipping_charge = 0.00
+    else:
+        shipping_charge = 25.00
+    return shipping_charge
+
+
+def display_result(order_total, shipping_charge):
+    print(f"Order total: ${order_total:.2f}")
+    print(f"Shipping charge: ${shipping_charge:.2f}")
+
+
+def main():
+    number_of_books = get_number_of_books()
+    cost_per_book = get_cost_per_book()
+    order_total = calculate_order_total(number_of_books, cost_per_book)
+    shipping_charge = get_shipping_charge(order_total)
+    display_result(order_total, shipping_charge)
+
+
+main()
