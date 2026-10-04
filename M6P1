@@ -1,0 +1,22 @@
+# M6P1 - Widget price, tax, and total
+
+# Input
+quantity = int(input("Enter quantity of widgets: "))
+
+# Process
+if quantity > 10000:
+    price = 10.00
+elif quantity >= 5000 and quantity <= 10000:
+    price = 20.00
+else:
+    price = 30.00
+
+extended_price = quantity * price
+tax = extended_price * 0.07
+total = extended_price + tax
+
+# Output
+print()
+print(f"{'Extended price:':<22}${extended_price:>15,.2f}")
+print(f"{'Tax:':<22}${tax:>15,.2f}")
+print(f"{'Total:':<22}${total:>15,.2f}")

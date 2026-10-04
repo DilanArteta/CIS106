@@ -1,0 +1,22 @@
+# M6P4 - Concert ticket price and total cost
+
+# Input
+quantity = int(input("Enter number of concert tickets: "))
+
+# Process
+if quantity >= 25:
+    price_per_ticket = 50.00
+elif quantity >= 10 and quantity <= 24:
+    price_per_ticket = 60.00
+elif quantity >= 5 and quantity <= 9:
+    price_per_ticket = 70.00
+else:
+    price_per_ticket = 75.00
+
+total_cost = quantity * price_per_ticket
+
+# Output
+print()
+print(f"{'Number of tickets:':<22}{quantity:>16,d}")
+print(f"{'Price per ticket:':<22}${price_per_ticket:>15,.2f}")
+print(f"{'Total cost:':<22}${total_cost:>15,.2f}")
