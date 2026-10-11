@@ -1,0 +1,31 @@
+# Display numbers using user-entered start, stop, and increment values.
+
+
+def get_value(name):
+    print("Enter the " + name + ":")
+    value = int(input())
+    return value
+
+
+def display_numbers(start, stop, increment):
+    number = start
+    if increment > 0:
+        while number <= stop:
+            print(number)
+            number = number + increment
+    elif increment < 0:
+        while number >= stop:
+            print(number)
+            number = number + increment
+    else:
+        print("The increment cannot be zero.")
+
+
+def main():
+    start = get_value("start value")
+    stop = get_value("stop value")
+    increment = get_value("increment value")
+    display_numbers(start, stop, increment)
+
+
+main()

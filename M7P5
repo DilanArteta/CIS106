@@ -1,0 +1,48 @@
+# Calculate order discounts and totals, and sum all discounts.
+
+
+def get_response():
+    print("Do you want to enter an order? (Yes to continue):")
+    response = input()
+    return response
+
+
+def calculate_discount(extended_price):
+    if extended_price > 10000.00:
+        discount_rate = 0.25
+    else:
+        discount_rate = 0.10
+    discount_amount = extended_price * discount_rate
+    return discount_amount
+
+
+def display_order(extended_price, discount_amount, total):
+    print(f"{'Extended price:':<20} ${extended_price:12.2f}")
+    print(f"{'Discount amount:':<20} ${discount_amount:12.2f}")
+    print(f"{'Total:':<20} ${total:12.2f}")
+
+
+def order_loop():
+    total_discounts = 0.00
+    response = get_response()
+    while response.strip().lower() == "yes":
+        print("Enter the quantity:")
+        quantity = int(input())
+        print("Enter the item price:")
+        item_price = float(input())
+
+        extended_price = quantity * item_price
+        discount_amount = calculate_discount(extended_price)
+        total = extended_price - discount_amount
+        display_order(extended_price, discount_amount, total)
+        total_discounts = total_discounts + discount_amount
+        response = get_response()
+
+    print(f"{'Total discounts:':<20} ${total_discounts:12.2f}")
+
+
+def main():
+    order_loop()
+
+
+main()

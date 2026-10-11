@@ -1,0 +1,15 @@
+# Display odd numbers from 1 through 25 using a while loop.
+
+
+def display_odd_numbers():
+    number = 1
+    while number <= 25:
+        print(number)
+        number = number + 2
+
+
+def main():
+    display_odd_numbers()
+
+
+main()

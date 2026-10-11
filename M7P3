@@ -1,0 +1,43 @@
+# Calculate each student's average exam score and count the students.
+
+
+def get_response():
+    print("Do you want to enter student data? (Yes to continue):")
+    response = input()
+    return response
+
+
+def calculate_average(score_1, score_2):
+    average = (score_1 + score_2) / 2
+    return average
+
+
+def display_student(last_name, average):
+    print("Last name: " + last_name)
+    print(f"Average exam score: {average:.2f}")
+
+
+def student_loop():
+    student_count = 0
+    response = get_response()
+    while response.strip().lower() == "yes":
+        print("Enter the student's last name:")
+        last_name = input()
+        print("Enter the first exam score:")
+        score_1 = float(input())
+        print("Enter the second exam score:")
+        score_2 = float(input())
+
+        average = calculate_average(score_1, score_2)
+        display_student(last_name, average)
+        student_count = student_count + 1
+        response = get_response()
+
+    print("Number of students: " + str(student_count))
+
+
+def main():
+    student_loop()
+
+
+main()

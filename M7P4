@@ -1,0 +1,58 @@
+# Calculate employee gross pay, including overtime, and payroll totals.
+
+
+def get_response():
+    print("Do you want to enter employee data? (Yes to continue):")
+    response = input()
+    return response
+
+
+def calculate_gross_pay(hours, rate):
+    if hours > 40:
+        gross_pay = 40 * rate + (hours - 40) * rate * 1.5
+    else:
+        gross_pay = hours * rate
+    return gross_pay
+
+
+def display_employee(last_name, gross_pay):
+    print("Last name: " + last_name)
+    print(f"{'Gross pay:':<20} ${gross_pay:12.2f}")
+
+
+def display_summary(total_gross_pay, employee_count):
+    if employee_count > 0:
+        average_pay = total_gross_pay / employee_count
+    else:
+        average_pay = 0.00
+    print(f"{'Total gross pay:':<20} ${total_gross_pay:12.2f}")
+    print("Number of employees: " + str(employee_count))
+    print(f"{'Average pay:':<20} ${average_pay:12.2f}")
+
+
+def employee_loop():
+    total_gross_pay = 0.00
+    employee_count = 0
+    response = get_response()
+    while response.strip().lower() == "yes":
+        print("Enter the employee's last name:")
+        last_name = input()
+        print("Enter hours worked:")
+        hours = float(input())
+        print("Enter the rate of pay:")
+        rate = float(input())
+
+        gross_pay = calculate_gross_pay(hours, rate)
+        display_employee(last_name, gross_pay)
+        total_gross_pay = total_gross_pay + gross_pay
+        employee_count = employee_count + 1
+        response = get_response()
+
+    display_summary(total_gross_pay, employee_count)
+
+
+def main():
+    employee_loop()
+
+
+main()
