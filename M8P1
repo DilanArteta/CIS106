@@ -1,0 +1,44 @@
+# Calculate five years of compound interest for each investment entered.
+
+
+def get_response():
+    print("Do you want to calculate an investment? (Yes to continue):")
+    response = input()
+    return response
+
+
+def get_amount(label):
+    print(label)
+    amount = float(input())
+    return amount
+
+
+def display_balances(principal, rate):
+    total_interest = 0.00
+    print(f"{'Year':<6}{'Beginning':>16}{'Ending':>16}")
+    print(f"{'':<6}{'Balance':>16}{'Balance':>16}")
+
+    for year in range(1, 6):
+        beginning_balance = principal
+        annual_interest = beginning_balance * rate
+        ending_balance = beginning_balance + annual_interest
+        total_interest = total_interest + annual_interest
+
+        beginning_text = f"${beginning_balance:,.2f}"
+        ending_text = f"${ending_balance:,.2f}"
+        print(f"{year:<6}{beginning_text:>16}{ending_text:>16}")
+        principal = ending_balance
+
+    print(f"Total interest earned: ${total_interest:,.2f}")
+
+
+def main():
+    response = get_response()
+    while response.strip().lower() == "yes":
+        principal = get_amount("Enter principal amount:")
+        rate = get_amount("Enter interest rate as a decimal (0.10 for 10%):")
+        display_balances(principal, rate)
+        response = get_response()
+
+
+main()

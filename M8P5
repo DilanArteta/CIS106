@@ -1,0 +1,46 @@
+# Read student records and calculate tuition by district code.
+
+from pathlib import Path
+
+
+def calculate_tuition(district_code, credits):
+    if district_code == "I":
+        cost_per_credit = 250.00
+    else:
+        cost_per_credit = 500.00
+
+    tuition = credits * cost_per_credit
+    return tuition
+
+
+def display_student(last_name, credits, tuition):
+    tuition_text = f"${tuition:,.2f}"
+    print(f"{last_name:<18}{credits:>10}{tuition_text:>18}")
+
+
+def student_loop():
+    total_tuition = 0.00
+    student_count = 0
+    file_path = Path(__file__).with_name("M8P5.txt")
+    print(f"{'Last name':<18}{'Credits':>10}{'Tuition owed':>18}")
+
+    with open(file_path, "r", encoding="utf-8") as data_file:
+        for last_name in data_file:
+            last_name = last_name.strip()
+            district_code = data_file.readline().strip().upper()
+            credits = int(data_file.readline())
+            tuition = calculate_tuition(district_code, credits)
+
+            display_student(last_name, credits, tuition)
+            total_tuition = total_tuition + tuition
+            student_count = student_count + 1
+
+    print(f"Total tuition owed: ${total_tuition:,.2f}")
+    print(f"Number of students: {student_count}")
+
+
+def main():
+    student_loop()
+
+
+main()

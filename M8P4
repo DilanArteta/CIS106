@@ -1,0 +1,47 @@
+# Read orders and display extended prices, their sum, count, and average.
+
+from pathlib import Path
+
+
+def display_order(item, quantity, price, extended_price):
+    price_text = f"${price:,.2f}"
+    extended_text = f"${extended_price:,.2f}"
+    print(f"{item:<18}{quantity:>10}{price_text:>16}{extended_text:>18}")
+
+
+def display_summary(total_extended_price, order_count):
+    if order_count > 0:
+        average_order = total_extended_price / order_count
+    else:
+        average_order = 0.00
+
+    print(f"Sum of extended prices: ${total_extended_price:,.2f}")
+    print(f"Number of orders: {order_count}")
+    print(f"Average order: ${average_order:,.2f}")
+
+
+def order_loop():
+    total_extended_price = 0.00
+    order_count = 0
+    file_path = Path(__file__).with_name("M8P4.txt")
+    print(f"{'Item':<18}{'Quantity':>10}{'Price':>16}{'Extended price':>18}")
+
+    with open(file_path, "r", encoding="utf-8") as data_file:
+        for item in data_file:
+            item = item.strip()
+            quantity = int(data_file.readline())
+            price = float(data_file.readline())
+            extended_price = quantity * price
+
+            display_order(item, quantity, price, extended_price)
+            total_extended_price = total_extended_price + extended_price
+            order_count = order_count + 1
+
+    display_summary(total_extended_price, order_count)
+
+
+def main():
+    order_loop()
+
+
+main()

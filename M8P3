@@ -1,0 +1,44 @@
+# Read employee names and salaries, calculate bonuses, and total bonuses.
+
+from pathlib import Path
+
+
+def calculate_bonus(salary):
+    if salary >= 100000.00:
+        bonus_rate = 0.20
+    elif salary >= 50000.00:
+        bonus_rate = 0.15
+    else:
+        bonus_rate = 0.10
+
+    bonus = salary * bonus_rate
+    return bonus
+
+
+def display_employee(last_name, salary, bonus):
+    salary_text = f"${salary:,.2f}"
+    bonus_text = f"${bonus:,.2f}"
+    print(f"{last_name:<18}{salary_text:>16}{bonus_text:>16}")
+
+
+def employee_loop():
+    total_bonuses = 0.00
+    file_path = Path(__file__).with_name("M8P3.txt")
+    print(f"{'Last name':<18}{'Salary':>16}{'Bonus':>16}")
+
+    with open(file_path, "r", encoding="utf-8") as data_file:
+        for last_name in data_file:
+            last_name = last_name.strip()
+            salary = float(data_file.readline())
+            bonus = calculate_bonus(salary)
+            display_employee(last_name, salary, bonus)
+            total_bonuses = total_bonuses + bonus
+
+    print(f"Total bonuses paid: ${total_bonuses:,.2f}")
+
+
+def main():
+    employee_loop()
+
+
+main()
