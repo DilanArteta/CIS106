@@ -1,0 +1,30 @@
+# Module 10, Problem 4: Train ticket prices
+
+def compute_ticket_price(miles):
+    if miles >= 30:
+        price = 12.0
+    elif miles >= 20:
+        price = 10.0
+    elif miles >= 10:
+        price = 8.0
+    else:
+        price = 5.0
+    return price
+
+
+def main():
+    total_tickets = 0.0
+    answer = input("Do you want to enter a passenger? (Yes or No): ").strip().lower()
+    while answer == "yes":
+        last_name = input("Enter last name: ")
+        miles = float(input("Enter miles from downtown Chicago: "))
+        ticket_price = compute_ticket_price(miles)
+        print(f"Passenger: {last_name}")
+        print(f"Ticket price: ${ticket_price:,.2f}")
+        total_tickets = total_tickets + ticket_price
+        answer = input("Do you want to enter another passenger? (Yes or No): ").strip().lower()
+    print(f"Total ticket prices: ${total_tickets:,.2f}")
+
+
+if __name__ == "__main__":
+    main()

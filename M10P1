@@ -1,0 +1,32 @@
+# Module 10, Problem 1: Next month's sales forecast
+
+def compute_forecast(month, sales):
+    month = month.strip().lower()[:3]
+    if month in ("jan", "feb", "mar"):
+        percent = 0.10
+    elif month in ("apr", "may", "jun"):
+        percent = 0.15
+    elif month in ("jul", "aug", "sep"):
+        percent = 0.20
+    else:
+        percent = 0.25
+    return sales * (1 + percent)
+
+
+def main():
+    answer = input("Do you want to enter sales? (Yes or No): ").strip().lower()
+    while answer == "yes":
+        last_name = input("Enter last name: ")
+        month = input("Enter month (Jan-Dec): ").strip().lower()[:3]
+        while month not in ("jan", "feb", "mar", "apr", "may", "jun",
+                            "jul", "aug", "sep", "oct", "nov", "dec"):
+            month = input("Invalid month. Enter Jan-Dec: ").strip().lower()[:3]
+        sales = float(input("Enter sales: "))
+        forecast = compute_forecast(month, sales)
+        print(f"Last name: {last_name}")
+        print(f"Next month's sales forecast: ${forecast:,.2f}")
+        answer = input("Do you want to enter more sales? (Yes or No): ").strip().lower()
+
+
+if __name__ == "__main__":
+    main()

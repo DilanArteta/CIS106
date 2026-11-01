@@ -1,0 +1,43 @@
+# Module 10, Problem 3: Automobile out-the-door price
+# All electric vehicles receive 30% off, regardless of make or model.
+
+def compute_sale_price(msrp, make, model, electric_code):
+    make = make.strip().lower()
+    model = model.strip().lower()
+    electric_code = electric_code.strip().upper()
+    if electric_code == "Y":
+        percent_off = 0.30
+    elif make == "honda" and model == "accord":
+        percent_off = 0.10
+    elif make == "toyota" and model == "rav4":
+        percent_off = 0.15
+    else:
+        percent_off = 0.05
+    discounted_price = msrp * (1 - percent_off)
+    sales_tax = discounted_price * 0.07
+    return discounted_price + sales_tax
+
+
+def main():
+    total_msrp = 0.0
+    total_sales = 0.0
+    answer = input("Do you want to enter a car? (Yes or No): ").strip().lower()
+    while answer == "yes":
+        make = input("Enter make: ")
+        model = input("Enter model: ")
+        electric_code = input("Is it electric? (Y or N): ").strip().upper()
+        while electric_code not in ("Y", "N"):
+            electric_code = input("Enter Y or N: ").strip().upper()
+        msrp = float(input("Enter MSRP: "))
+        sale_price = compute_sale_price(msrp, make, model, electric_code)
+        print(f"Vehicle: {make} {model}")
+        print(f"Out-the-door price: ${sale_price:,.2f}")
+        total_msrp = total_msrp + msrp
+        total_sales = total_sales + sale_price
+        answer = input("Do you want to enter another car? (Yes or No): ").strip().lower()
+    print(f"Total MSRP: ${total_msrp:,.2f}")
+    print(f"Total sales prices: ${total_sales:,.2f}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,30 @@
+# Module 10, Problem 2: Wall paint and bonus ceiling paint
+# Bonus assumption: ceiling paint also covers 50 square feet per gallon.
+
+def compute_wall_area(length, width, height):
+    return 2 * length * height + 2 * width * height
+
+
+def compute_ceiling_area(length, width):
+    return length * width
+
+
+def main():
+    answer = input("Do you want to enter a room? (Yes or No): ").strip().lower()
+    while answer == "yes":
+        length = float(input("Enter room length in feet: "))
+        width = float(input("Enter room width in feet: "))
+        height = float(input("Enter room height in feet: "))
+        wall_area = compute_wall_area(length, width, height)
+        wall_gallons = wall_area / 50
+        ceiling_area = compute_ceiling_area(length, width)
+        ceiling_gallons = ceiling_area / 50
+        print(f"Wall area: {wall_area:,.2f} square feet")
+        print(f"Wall paint needed: {wall_gallons:,.2f} gallons")
+        print(f"Ceiling area: {ceiling_area:,.2f} square feet")
+        print(f"Ceiling paint needed: {ceiling_gallons:,.2f} gallons")
+        answer = input("Do you want to enter another room? (Yes or No): ").strip().lower()
+
+
+if __name__ == "__main__":
+    main()
