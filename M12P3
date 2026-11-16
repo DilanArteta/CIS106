@@ -1,0 +1,59 @@
+from pathlib import Path
+
+
+def display_students(last_names, scores):
+    print(f"{'Last name':<15}{'Score':>6}")
+    for index in range(len(last_names)):
+        print(f"{last_names[index]:<15}{scores[index]:>6}")
+
+
+def display_reverse(last_names, scores):
+    print(f"{'Last name':<15}{'Score':>6}")
+    for index in range(len(last_names) - 1, -1, -1):
+        print(f"{last_names[index]:<15}{scores[index]:>6}")
+
+
+def display_high_low(last_names, scores):
+    if len(scores) == 0:
+        print("No student records.")
+        return
+
+    # Scores are assumed to be between 0 and 100.
+    high_var = 0
+    low_var = 999
+    high_index = 0
+    low_index = 0
+    for index in range(len(scores)):
+        if scores[index] > high_var:
+            high_var = scores[index]
+            high_index = index
+        if scores[index] < low_var:
+            low_var = scores[index]
+            low_index = index
+
+    # For tied scores, display the first matching student.
+    print(f"\nHighest score: {last_names[high_index]} {high_var}")
+    print(f"Lowest score:  {last_names[low_index]} {low_var}")
+
+
+def main():
+    last_names = []
+    scores = []
+    # Locate the data beside this program, even when run from another folder.
+    data_path = Path(__file__).parent / "students.txt"
+    with open(data_path, "r") as data_file:
+        for line in data_file:
+            record = line.split()
+            if len(record) == 2:
+                last_names += [record[0]]
+                scores += [int(record[1])]
+
+    print("Student exam scores")
+    display_students(last_names, scores)
+    print("\nStudents in reverse order")
+    display_reverse(last_names, scores)
+    display_high_low(last_names, scores)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,20 @@
+def display_names(last_names):
+    for index in range(len(last_names)):
+        print(last_names[index])
+
+
+def display_reverse(last_names):
+    for index in range(len(last_names) - 1, -1, -1):
+        print(last_names[index])
+
+
+def main():
+    last_names = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Wilson', 'Anderson']
+    print("Names in original order")
+    display_names(last_names)
+    print("\nNames in reverse order")
+    display_reverse(last_names)
+
+
+if __name__ == "__main__":
+    main()

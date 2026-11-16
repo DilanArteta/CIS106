@@ -1,0 +1,40 @@
+from pathlib import Path
+
+
+def display_players(player_names, batting_averages):
+    print(f"{'Last name':<15}{'Batting average':>16}")
+    for index in range(len(player_names)):
+        print(f"{player_names[index]:<15}{batting_averages[index]:>16.3f}")
+
+
+def search_player(player_names, batting_averages, target):
+    # Sequential search: compare the target with each array element.
+    index = 0
+    while index < len(player_names):
+        if player_names[index] == target:
+            print(f"{player_names[index]} {batting_averages[index]:.3f}")
+            return
+        index += 1
+
+
+def main():
+    player_names = [""] * 10
+    batting_averages = [0.0] * 10
+    data_path = Path(__file__).parent / "players.txt"
+    with open(data_path, "r") as data_file:
+        for index in range(10):
+            record = data_file.readline().split()
+            player_names[index] = record[0]
+            batting_averages[index] = float(record[1])
+
+    display_players(player_names, batting_averages)
+    print("\nEnter a last name exactly as listed. Press Enter to quit.")
+    target = input("Last name: ")
+    while target != "":
+        search_player(player_names, batting_averages, target)
+        target = input("Last name: ")
+    print("Search complete.")
+
+
+if __name__ == "__main__":
+    main()
