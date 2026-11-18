@@ -1,0 +1,22 @@
+def main():
+    student_grades = {
+        "Ava": 92,
+        "Liam": 85,
+        "Mia": 78,
+        "Noah": 96,
+        "Sofia": 88,
+    }
+
+    class_average = sum(student_grades.values()) / len(student_grades)
+
+    print(f"{'Student Name':<20}{'Grade':>10}")
+    print("-" * 30)
+    for name, grade in student_grades.items():
+        print(f"{name:<20}{grade:>10.2f}")
+
+    print("-" * 30)
+    print(f"{'Class Average':<20}{class_average:>10.2f}")
+
+
+if __name__ == "__main__":
+    main()

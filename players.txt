@@ -1,10 +1,10 @@
-Judge 0.322
-Ohtani 0.310
-Soto 0.288
-Betts 0.289
-Freeman 0.282
-Harper 0.285
-Lindor 0.273
-Ramirez 0.279
-Witt 0.332
-Henderson 0.281
+Anderson,0.267
+Brown,0.300
+Clark,0.284
+Davis,0.251
+Garcia,0.319
+Jackson,0.276
+Lee,0.292
+Miller,0.305
+Rivera,0.260
+Wilson,0.288

@@ -1,0 +1,41 @@
+def calculate_class_averages(student_grades):
+    class_averages = []
+
+    for grade_index in range(3):
+        grade_total = 0
+        for grades in student_grades.values():
+            grade_total += grades[grade_index]
+        class_averages.append(grade_total / len(student_grades))
+
+    return class_averages
+
+
+def main():
+    student_grades = {
+        "Ava": [92, 94, 90],
+        "Liam": [85, 88, 91],
+        "Mia": [78, 84, 87],
+        "Noah": [96, 91, 98],
+        "Sofia": [88, 90, 93],
+    }
+
+    print("Student Grade Averages")
+    print(f"{'Student Name':<20}{'Average':>10}")
+    print("-" * 30)
+    for name, grades in student_grades.items():
+        student_average = sum(grades) / len(grades)
+        print(f"{name:<20}{student_average:>10.2f}")
+
+    class_averages = calculate_class_averages(student_grades)
+
+    print()
+    print("Class Averages by Grade")
+    print(f"{'Grade':<20}{'Average':>10}")
+    print("-" * 30)
+    for grade_number, average in enumerate(class_averages, start=1):
+        grade_label = f"Grade {grade_number}"
+        print(f"{grade_label:<20}{average:>10.2f}")
+
+
+if __name__ == "__main__":
+    main()

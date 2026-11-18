@@ -1,0 +1,27 @@
+from pathlib import Path
+
+
+def print_batting_averages(player_averages):
+    print(f"{'Player Name':<20}{'Batting Average':>16}")
+    print("-" * 36)
+    for last_name, average in player_averages.items():
+        print(f"{last_name:<20}{average:>16.3f}")
+
+
+def main():
+    # Look for the data file beside this script, even if Python is run elsewhere.
+    data_path = Path(__file__).with_name("players.txt")
+    player_averages = {}
+
+    with data_path.open(encoding="utf-8") as data_file:
+        for line in data_file:
+            line = line.strip()
+            if line:
+                last_name, average = line.split(",")
+                player_averages[last_name.strip()] = float(average)
+
+    print_batting_averages(player_averages)
+
+
+if __name__ == "__main__":
+    main()
